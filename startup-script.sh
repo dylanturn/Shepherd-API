@@ -1,0 +1,1 @@
+java -Dlog4j.configurationFile=log4j2.xml -cp "shepherd-api-1.0-jar-with-dependencies.jar"  dylanturn.shepherdapi.testcluster.TestCluster
