@@ -14,7 +14,6 @@ import org.jgroups.protocols.CENTRAL_LOCK;
 import org.jgroups.protocols.STATS;
 import spark.Request;
 
-import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.*;
 

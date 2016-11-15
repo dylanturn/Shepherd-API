@@ -36,9 +36,12 @@ public class TestCluster {
         JChannel jChannel = new JChannel();
         jChannel.setReceiver(new TestReceiver());
         jChannel.stats(true);
-        jChannel.connect(CLUSTER_NAME);
 
         ShepherdAPI shepherdAPI = new ShepherdAPI(jChannel,CLUSTER_ADDR,String.valueOf(CLUSTER_PORT),String.valueOf(IPVER),API_PORT,COLLECTION_INTERVAL);
+
+        jChannel.connect(CLUSTER_NAME);
+
+
 
         System.out.println("Press Ctl+C to Quit...");
         while(true){
