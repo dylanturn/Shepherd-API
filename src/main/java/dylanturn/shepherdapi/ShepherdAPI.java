@@ -48,30 +48,37 @@ public class ShepherdAPI {
         this.apiPort = apiPort;
         this.apiIntervalMS = apiIntervalMS;
 
-        System.out.println("Starting API Server...");
-        if(LOG.isInfoEnabled())
-            LOG.info("Starting API Server...");
-
-        try {
+        try{
             ClassConfigurator.add(new ShepherdHeader().getMagicId(), ShepherdHeader.class);
             shepherdChannel = new ForkChannel(channel, "shepherdfork", "fork-shepherd", new CENTRAL_LOCK(), new STATS());
             shepherdChannel.setReceiver(new MessageReceiver(this));
-            shepherdChannel.connect("Shepherd");
         } catch (Exception error){
             if(LOG.isErrorEnabled())
                 LOG.error("Failed to create Shepherd fork channel.",error);
         }
-        startDataCollector();
-
-        port(apiPort);
-        before((request, response) -> response.type("application/xml"));
-        after((request, response) -> { response.header("Access-Control-Allow-Origin", "*"); });
-        get("/sdk", (request, response) -> getResponseXML(request));
-
-        System.out.println("API Server Started!");
-
     }
 
+    public void connect(){
+        try {
+            if(LOG.isInfoEnabled())
+                LOG.info("Starting API Server...");
+
+            shepherdChannel.connect("Shepherd");
+
+            startDataCollector();
+
+            port(apiPort);
+            before((request, response) -> response.type("application/xml"));
+            after((request, response) -> { response.header("Access-Control-Allow-Origin", "*"); });
+            get("/sdk", (request, response) -> getResponseXML(request));
+
+            System.out.println("API Server Started!");
+
+        } catch (Exception error){
+            if(LOG.isErrorEnabled())
+                LOG.error("Failed to connect to Shepherd fork channel.",error);
+        }
+    }
     private void startDataCollector(){
         final ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
         service.scheduleWithFixedDelay(()->{ collectData(channel, this); }, 0, apiIntervalMS, TimeUnit.MILLISECONDS);

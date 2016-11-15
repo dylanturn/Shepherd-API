@@ -40,7 +40,7 @@ public class TestCluster {
         ShepherdAPI shepherdAPI = new ShepherdAPI(jChannel,CLUSTER_ADDR,String.valueOf(CLUSTER_PORT),String.valueOf(IPVER),API_PORT,COLLECTION_INTERVAL);
 
         jChannel.connect(CLUSTER_NAME);
-
+        shepherdAPI.connect();
 
 
         System.out.println("Press Ctl+C to Quit...");
