@@ -24,14 +24,15 @@ public class TestCluster {
     private final static int COLLECTION_INTERVAL = 1000;
 
     public static void main(String[] args) throws Exception {
-        System.out.println("******************************************");
-        System.out.println("*    Scatter - Distributed Processing    *");
-        System.out.println("******************************************");
-        System.out.println(String.format("Build Timestamp: %s", getCompileTimeStamp().toString()));
-        System.out.println(String.format("Cluster Name:    %s", CLUSTER_NAME));
-        System.out.println(String.format("Cluster Address: %s", CLUSTER_ADDR));
-        System.out.println(String.format("Cluster Port:    %s", CLUSTER_PORT));
-        System.out.println(String.format("API Port:        %s", API_PORT));
+        System.out.println("*******************************************");
+        System.out.println("*        Shepherd-API Test Cluster        *");
+        System.out.println("*******************************************");
+        System.out.println(String.format("  Build Timestamp: %s", getCompileTimeStamp().toString()));
+        System.out.println(String.format("  Cluster Name:    %s", CLUSTER_NAME));
+        System.out.println(String.format("  Cluster Address: %s", CLUSTER_ADDR));
+        System.out.println(String.format("  Cluster Port:    %s", CLUSTER_PORT));
+        System.out.println(String.format("  API Port:        %s", API_PORT));
+        System.out.println("*******************************************");
 
         JChannel jChannel = new JChannel();
         jChannel.setReceiver(new TestReceiver());
