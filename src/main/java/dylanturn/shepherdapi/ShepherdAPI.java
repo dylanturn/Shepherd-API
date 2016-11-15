@@ -90,8 +90,9 @@ public class ShepherdAPI {
     }
 
     private void collectData(JChannel channel, ShepherdAPI scatterAPI){
-        if(!channel.isConnected() && !shepherdChannel.isConnected())
+        if(!channel.isConnected() || !shepherdChannel.isConnected())
             return;
+
         Logger collectionLogger = LogManager.getLogger(ShepherdAPI.class);
         if(collectionLogger.isDebugEnabled())
             collectionLogger.debug("Collecting member data...");
