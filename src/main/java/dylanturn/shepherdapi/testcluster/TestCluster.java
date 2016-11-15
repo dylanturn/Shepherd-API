@@ -27,12 +27,11 @@ public class TestCluster {
         System.out.println("*******************************************");
         System.out.println("*        Shepherd-API Test Cluster        *");
         System.out.println("*******************************************");
-        System.out.println(String.format("  Build Timestamp: %s", getCompileTimeStamp().toString()));
-        System.out.println(String.format("  Cluster Name:    %s", CLUSTER_NAME));
-        System.out.println(String.format("  Cluster Address: %s", CLUSTER_ADDR));
-        System.out.println(String.format("  Cluster Port:    %s", CLUSTER_PORT));
-        System.out.println(String.format("  API Port:        %s", API_PORT));
-        System.out.println("*******************************************");
+        System.out.println(String.format("Build Timestamp: %s", getCompileTimeStamp().toString()));
+        System.out.println(String.format("Cluster Name:    %s", CLUSTER_NAME));
+        System.out.println(String.format("Cluster Address: %s", CLUSTER_ADDR));
+        System.out.println(String.format("Cluster Port:    %s", CLUSTER_PORT));
+        System.out.println(String.format("API Port:        %s", API_PORT));
 
         JChannel jChannel = new JChannel();
         jChannel.setReceiver(new TestReceiver());
